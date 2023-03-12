@@ -11,3 +11,13 @@
     line-height: var(--line-height-hight);
     white-space: pre-wrap;
 }
+
+.question-response-text {
+    line-height: var(--line-height-hight);
+    white-space: pre-wrap;
+}
+
+small {
+    color: var(--gray);
+    opacity: 0.7;
+}
