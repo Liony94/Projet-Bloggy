@@ -28,6 +28,7 @@ class QuestionController extends AbstractController
             $question->setCreatedAt( new \DateTimeImmutable());
             $em->persist($question);
             $em->flush();
+            $this->addFlash('success', 'Votre question a été ajoutée');
 
             return $this->redirectToRoute('home');
         }

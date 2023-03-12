@@ -10,7 +10,7 @@ class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
     public function index(): Response
-    {
+    {  
 
         $questions = [
             [

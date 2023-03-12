@@ -274,6 +274,18 @@ a {
     min-width: 200px;
 }
 
+/* flash */
+
+.flash {
+    padding: 20px;
+    text-align: center;
+    color: var(--primary-light);
+}
+
+.flash-success {
+    background-color: var(--success);
+}
+
 /* header */
 
 header {
