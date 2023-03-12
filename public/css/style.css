@@ -24,6 +24,7 @@
     --font-weight-reuglar: 400;
     --font-weight-semi-bold:600;
     --font-weight-bold:700;
+    --line-height-hight: 30px;
 }
 
 /* debug */
@@ -124,6 +125,14 @@ a {
 
 /* margin */
 
+.mr-auto {
+    margin-right: auto;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
 .m-5 {
     margin: 5px;
 }
@@ -185,6 +194,10 @@ a {
     padding-bottom: 20px;
 }
 
+.pb-30 {
+    padding-bottom: 30px;
+}
+
 /* general */
 
 .app-content {
@@ -193,6 +206,11 @@ a {
 
 .content {
     max-width: var(--max-width);
+}
+
+.separator {
+    border-bottom: 1px solid var(--gray-light);
+    margin: 30px 0px;
 }
 
 .btn {

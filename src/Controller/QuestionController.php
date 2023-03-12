@@ -37,4 +37,12 @@ class QuestionController extends AbstractController
             'form' => $formQuestion->createView(),
         ]);
     }
+
+    #[Route('question/{id}', name: 'show')]
+    public function show(Question $question): Response
+    {
+        return $this->render('question/show.html.twig', [
+            'question' => $question,
+        ]);
+    }
 }
