@@ -8,12 +8,7 @@
   <ul>
     {% for question in questions %}
       <a href="{{ path('show', { id: question.id }) }}" class="block block-shadow d-flex flex-row mb-20">
-        <div class="d-flex flex-column mr-20 align-items-center">
-          <i class="fas fa-arrow-up {{ question.rating > 0 ? 'rating-up' : '' }}"></i>
-          <p class="text-small {{ question.rating > 0 ? 'rating-up' : question.rating < 0 ? 'rating-down' : ''}}"
-          > {{ question.rating }}</p>
-          <i class="fas fa-arrow-down {{ question.rating < 0 ? 'rating-down' : '' }}"></i>
-        </div>
+        {% include "partials/_rating.html.twig" with { rating: question.rating } %}
         <div class="flex-fill d-flex flex-column">
           <div class="mb-20 question-content pb-20">
             <h3 class="mb-20">{{ question.title }}</h3>
