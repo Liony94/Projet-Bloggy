@@ -44,7 +44,7 @@ class QuestionController extends AbstractController
         ]);
     }
 
-    #[Route('question/{id}', name: 'show')]
+    #[Route('question/{id}', name: 'question_show')]
     public function show(Request $request, Question $question, EntityManagerInterface $em): Response
     {
         $options = [
