@@ -11,10 +11,8 @@ class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
     public function index(QuestionRepository $questionRepository): Response
-    {  
-        //  https://randomuser.me/api/portraits/men/52.jpg'
-        $questions = $questionRepository->findAll();
-
+    {
+        $questions = $questionRepository->getLastQuestionsWithAuthors();
         return $this->render('home/index.html.twig', [
             'questions' => $questions
         ]);
