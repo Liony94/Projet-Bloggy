@@ -1,12 +1,15 @@
 <header class="d-flex flex-row-nowrap justify-content-center p-20">
   <div class="content flex-fill d-flex flex-row-nowrap align-items-center justify-content-between">
   <a class="header-logo" href="{{ path('home') }}">
-    <img src="{{ asset('images/logo.svg')}}">
+    <i class="fas fa-house">Accueil</i>
   </a>
   <div class="header-search p-10 flex-fill">
     <i class="fas fa-search"></i>
     <input type="text">
   </div>
+
+<button id="theme-switcher" class="btn btn-secondary mr-5">Changer de thème</button>
+
   {%- if is_granted('ROLE_USER') -%}
     <div class="d-flex flow-row-nowrap justify-content-center">
     <a href="{{ path('current_user') }}">
@@ -23,4 +26,5 @@
     </div>
   {%- endif -%}
   </div>
+
 </header>
