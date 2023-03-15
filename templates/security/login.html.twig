@@ -29,12 +29,19 @@
 
       <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
+    <div class="d-flex flex-row">
       <button class="btn btn-primary mr-10" type="submit">
         Connexion
       </button>
+    <div class="d-flex flex-column">
       <small>
         <a href="{{ path('signup') }}">Vous n'avez pas encore de compte?</a>
       </small>
+      <small>
+        <a href="{{ path('reset-password-request') }}">Mot de passe oublié ?</a>
+      </small>
+    </div>
+    </div>
   </form>
 </div>
 {% endblock %}

@@ -26,6 +26,10 @@ security:
                 enable_csrf: true
             logout:
                 path: logout
+            # Config du rate limiter
+            login_throttling:
+                max_attempts: 3
+                interval: '5 minutes'
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
