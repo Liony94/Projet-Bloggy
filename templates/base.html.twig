@@ -8,12 +8,17 @@
 		</title>
 		<script defer src="{{ asset('js/index.js') }}"></script>
 		{% block stylesheet %}
-		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+		{{ encore_entry_link_tags('app') }}
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+		<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="c77e3436-3150-439b-9ba6-b1d9c4b75301";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 		{% endblock %}
+
+		{% block javascript %}
+      {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 		
 	</head>
 	<body class="d-flex flex-column">

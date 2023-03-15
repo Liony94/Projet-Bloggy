@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Service\Uploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +33,7 @@ class UserController extends AbstractController
 
     #[Route('/user', name: 'current_user')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
-    public function currentUserProfile(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
+    public function currentUserProfile(Uploader $uploader, Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = $this->getUser();
         $userForm = $this->createForm(UserType::class, $user);
@@ -40,17 +41,21 @@ class UserController extends AbstractController
         $userForm->add('newPassword', PasswordType::class, ['label' => 'Nouveau mot de passe', 'required' => false]);
         $userForm->handleRequest($request);
         if ($userForm->isSubmitted() && $userForm->isValid()) {
-            $newPassword = $user->getNewPassword();
-            if ($newPassword) {
-                $hash = $passwordHasher->hashPassword($user, $newPassword);
-                $user->setPassword($hash);
-            }
-            $em->flush();
-            $this->addFlash('success', 'Modifications sauvegardées !');
+        $newPassword = $user->getNewPassword();
+        if ($newPassword) {
+            $hash = $passwordHasher->hashPassword($user, $newPassword);
+            $user->setPassword($hash);
+        }
+        $picture = $userForm->get('pictureFile')->getData();
+        if ($picture) {
+            $user->setPicture($uploader->uploadProfileImage($picture, $user->getPicture()));
+        }
+        $em->flush();
+        $this->addFlash('success', 'Modifications sauvegardées !');
         }
 
         return $this->render('user/index.html.twig', [
-            'form' => $userForm->createView()
+        'form' => $userForm->createView()
         ]);
     }
 }
