@@ -1,13 +1,13 @@
 /* Thème sombre */
 
 body.dark-theme {
-    background-color: #2c546a;
+    background-color: #2a4e62;
     background-image: linear-gradient(315deg, #001C2F 0%, rgba(1, 152, 117, 0) 100%);
 }
 
 body.dark-theme .app-content {
     // background-color: #0b4555;
-    background-color: #2A4E62;
+    background-color: #2a4e62;
     background-image: linear-gradient(315deg, #001C2F 0%, rgba(1, 152, 117, 0) 100%);
 }
 
@@ -51,7 +51,7 @@ body.dark-theme .rating-up {
 }
 
 body.dark-theme h1, h2, h3, h4, h5 {
-    color: #1c1c1e;
+    color: #72cfe9;
 }
 
 body.dark-theme a.active {
@@ -59,14 +59,38 @@ body.dark-theme a.active {
 }
 
 body.dark-theme a {
-    color: white;
+    color: #72cfe9;
 }
 
 body.dark-theme p {
     color: white;
 }
 
+body.dark-theme p.clickable {
+    color: #72cfe9;
+}
+
 body.dark-theme footer {
     background-color: #2c546a;
     background-image: linear-gradient(315deg, #001C2F 0%, rgba(1, 152, 117, 0) 100%);
+}
+
+body.dark-theme .rating-up {
+    color: #00ffdd;
+}
+
+body.dark-theme .rating-down {
+    color: var(--warning);
+}
+
+body.dark-theme span.clickable {
+    color: white;
+}
+
+body.dark-theme .header-search-result {
+    background-color: #4a7f8e;
+    background-image: linear-gradient(315deg, #134362 0%, rgba(1, 152, 117, 0) 100%);
+    a {
+        color: white !important;
+    }
 }
