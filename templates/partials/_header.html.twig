@@ -1,31 +1,39 @@
 <header class="d-flex flex-row-nowrap justify-content-center p-20">
   <div class="content flex-fill d-flex flex-row-nowrap align-items-center justify-content-between">
-  <a class="header-logo" href="{{ path('home') }}">
-    <i class="fas fa-house">Accueil</i>
-    {# <img src="{{ asset('build/images/logo.svg')}}"> #}
-  </a>
-  <div class="header-search p-10 flex-fill">
-    <i class="fas fa-search"></i>
-    <input type="text">
-  </div>
-
-<button id="theme-switcher" class="btn btn-secondary mr-5">Changer de thème</button>
-
-  {%- if is_granted('ROLE_USER') -%}
-    <div class="d-flex flow-row-nowrap justify-content-center">
-    <a href="{{ path('current_user') }}">
-      <img src="{{ app.user.picture }}" class="avatar avatar-lg mr-10">
+    <a class="header-logo" href="{{ path('home') }}">
+      <img src="{{ asset('build/images/logo.svg')}}">
     </a>
-    <small class="d-flex flex-column justify-content-center">
-      <a href="{{ path('logout') }}">Déconnexion</a>
-    </small>
+    <div class="header-search p-10 flex-fill">
+      <i class="fas fa-search"></i>
+      <input type="text">
     </div>
-  {% else %}
-    <div>
-      <a href="{{ path('signup') }}" class="btn btn-primary mr-5">Inscription</a>
-      <a href="{{ path('login') }}" class="btn btn-primary-stroke">Connexion</a>
+    {%- if is_granted('ROLE_USER') -%}
+      <div class="d-flex flow-row-nowrap justify-content-center hide-xs">
+        <a href="{{ path('current_user') }}">
+          <img src="{{ asset(app.user.picture) }}" class="avatar avatar-lg mr-10">
+        </a>
+        <small class="d-flex flex-column justify-content-center">
+        <a href="{{ path('logout') }}">Déconnexion</a>
+        </small>
+      </div>
+    {% else %}
+      <div class="hide-xs">
+        <a href="{{ path('signup') }}" class="btn btn-primary mr-5">Inscription</a>
+        <a href="{{ path('login') }}" class="btn btn-primary-stroke">Connexion</a>
+      </div>
+    {%- endif -%}
+    <button id="theme-switcher" class="fas fa-yin-yang btn btn-secondary mr-5"></button>
+    <div class="show-xs burger">
+      <i class="fas fa-bars"></i>
     </div>
-  {%- endif -%}
   </div>
-
 </header>
+<div class="menu-xs d-flex flex-column hidden">
+  {%- if is_granted('ROLE_USER') -%}
+    <a href="{{ path('current_user') }}">Profil</a>
+    <a href="{{ path('logout') }}">Déconnexion</a>
+  {% else %}
+    <a href="{{ path('signup') }}" class="btn btn-primary mr-5">Inscription</a>
+    <a href="{{ path('login') }}" class="btn btn-primary-stroke">Connexion</a>
+  {%- endif -%}
+</div>
