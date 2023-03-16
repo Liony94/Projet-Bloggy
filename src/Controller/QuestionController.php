@@ -8,6 +8,7 @@ use App\Entity\Question;
 use App\Form\CommentType;
 use App\Form\QuestionType;
 use App\Repository\VoteRepository;
+use App\Repository\QuestionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -69,6 +70,18 @@ class QuestionController extends AbstractController
         }
         return $this->render('question/show.html.twig', $options);
     }
+
+    #[Route('/question/search/{search}', name: 'question_search', priority: 1)]
+    public function questionSearch(QuestionRepository $questionRepository, string $search = "none")
+    {
+        if ($search === "none") {
+        $questions = [];
+        } else {
+        $questions = $questionRepository->findBySearch($search);
+        }
+        return $this->json(json_encode($questions));
+    }
+
 
     #[Route('/question/rating/{id}/{score}', name: 'question_rating')]
     #[IsGranted('ROLE_USER')]
